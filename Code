@@ -256,7 +256,8 @@ gteach.display();
 }
 }
 
-\\EXE 7
+  \\EXE 7
+
 import java.io.*; 
 import java.util.*; 
 class student
@@ -313,5 +314,133 @@ student a1 =new student();
 placedstudent a2 = new placedstudent();
 a1.show(re,na,m1,m2,m3);
 a2.show(re,na,m1,m2,m3);
+}
+}
+
+  \\EXE 8
+package arithmetic;
+public class calc
+{
+int a,b;
+public calc(int x,int y)
+{
+a = x;
+b = y;
+}
+public void add()
+{ System.out.println(“Addition : “+(a+b)); }
+public void sub()
+{ System.out.println(“Subtraction : “+(a-b)); }
+public void mul()
+{ System.out.println(“Multiplication : “+(a*b)); }
+public void div()
+{ System.out.println(“Division : “+(a/b)); }
+}
+
+    \\ Import the package to the main program
+import arithmetic.*;
+class arith
+{
+public static void main(String arg[])
+{
+calc t =new calc(10,5);
+t.add();
+t.sub();
+t.mul();
+t.div();
+}
+}
+
+  \\ EXE 9
+
+(a) ArrayIndexOutOfBoundsException
+class arrex1
+{
+public static void main(String arg[])
+{
+try
+{
+int a[] = {2,4,6};
+System.out.println(a[5]);
+}
+catch(ArrayIndexOutOfBoundsException e)
+{ }
+finally
+{
+System.out.println("\nInvalide Array Value, change the value...");
+}
+}
+}
+
+(b) ArithmeticException
+class ariex1
+{
+public static void main(String arg[])
+{
+try
+{
+int a,b,c;
+a=10; b=0;
+c=a/b;
+System.out.println(c);
+}
+catch(ArithmeticException e)
+{ }
+finally
+{
+System.out.println("\nDivide by zero, change the value...");
+}
+}
+}
+
+  \\ EXE 10
+
+class threa3 extends Thread
+{
+public void run()
+{
+try
+{
+Thread.sleep(8000);
+System.out.println("\nWELCOME");
+}
+catch(Exceptione) {}
+}
+}
+class threa2 extends Thread
+{
+public void run()
+{
+try
+{
+Thread.sleep(4000);
+System.out.println("\nGOOD DAY");
+}
+catch(Exceptione) {}
+}
+}
+
+class threa1 extendsThread
+{
+public void run()
+{
+try
+{
+Thread.sleep(1000);
+System.out.println("\nHAI");
+}
+catch(Exceptione) {}
+}
+}
+public class Mythread
+{
+public static void main(String arg[])
+{
+threa3 t3 = newthrea3();
+t3.start();
+threa2 t2 = newthrea2();
+t2.start();
+threa1 t1 = newthrea1();
+t1.start();
 }
 }
