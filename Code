@@ -1,0 +1,317 @@
+\\EXE 1
+class Box
+{
+double width, height, depth; 
+Box(double w, double h, double dd)
+{
+this.width = w; 
+this.height = h; 
+this.depth = dd;
+}
+void display()
+{
+System.out.println("\n"+"Volume of the Box is..."+ (width*height*depth)+"\n");
+}
+public static void main(String arg[])
+{
+Box a,b;
+a = new Box(5,10,15); 
+a.display();
+b = new Box(10,15,20); 
+b.display();
+}
+}
+
+
+\\EXE 2
+
+class OverloadDemo
+{
+void area(float x)
+{
+System.out.println("\nthe area of the square is "+Math.pow(x, 2)+" sq units");
+}
+void area(float x, float y)
+{
+System.out.println("\nthe area of the rectangle is "+x*y+" sq units");
+}
+void area(double x)
+{
+double z = 3.14 * x * x;
+System.out.println("\nthe area of the circle is "+z+" sq units");
+}
+}
+class Overload1
+{
+public static void main(String args[])
+{
+OverloadDemo ob = new OverloadDemo(); 
+ob.area(5);
+ob.area(11,12);
+ob.area(2.5);
+}
+} 
+
+\\EXE 3
+
+class employee
+{
+int empid;
+String name, designation; 
+double salary;
+employee(int eid, String na, String des, double sa)
+{
+empid = eid; 
+name = na; 
+designation = des; 
+salary =sa;
+}
+void show()
+{
+System.out.println("\nEmployee Id : "+empid); 
+System.out.println("\nEmployee Name : "+name); 
+System.out.println("\nEmployee Designation : "+designation); 
+System.out.println("\nEmployee Salary : "+salary);
+}
+}
+class sportsemployee extends employee
+{
+String grade;
+sportsemployee(int eid, String na, String des, String gra, double sa)
+{
+super(eid,na,des,sa); 
+grade = gra;
+}
+void show()
+{
+System.out.println("\nSports Employee Grade : "+grade);
+}
+}
+class override1
+{
+public static void main(String arg[])
+{
+employee ee = new employee(101,"senthil","Professor",50000); 
+sportsemployee t = new
+sportsemployee(101,"senthil","Professor","Batsman",50000); 
+employee em;
+em = ee; 
+em.show(); 
+em = t; 
+em.show();
+}
+}
+
+\\EXE 4
+
+class consov
+{
+consov(int a, int b)
+{
+System.out.println("\ninteger value : "+(a+b));
+}
+consov(double a, double b)
+{
+System.out.println("\ndouble value : "+(a+b));
+}
+consov(float a, float b)
+{
+System.out.println("\nfloat value : "+(a+b));
+}
+consov(byte a, byte b)
+{
+System.out.println("\nbyte value : "+(a+b));
+}
+consov(short a, short b)
+{
+System.out.println("\nshort value : "+(a+b));
+}
+consov(long a, long b)
+{
+System.out.println("\nlong value : "+(a+b));
+}
+consov(String a, String b)
+{
+System.out.println("\nstring value : "+(a+b));
+}
+public static void main(String arg[])
+{
+consov t1,t2,t3,t4,t5,t6,t7; 
+t1 = new consov(5,10);
+t2 = new consov(10.3,14.2); 
+t3 = new consov(5.3,3.2); 
+t4 = newconsov(100,-50);
+t5 = new consov(10000,-20000); 
+t6 = new consov(250,200);
+t7 = new consov("ssv","ksv");
+}
+}
+
+\\EXE 5
+
+interface account
+{
+double saving(double ibala); 
+double deposit(double amount); 
+double withdraw(double amount);
+}
+class emp implements account
+{
+double bala1=0; 
+double depo1=0; 
+double withd1=0;
+public double saving(double ibala)
+{
+bala1 = ibala; 
+return(bala1);
+}
+public double deposit(double amount)
+{
+depo1 = bala1 + amount; 
+return(depo1);
+}
+public double withdraw(double amount)
+{
+withd1 = bala1 - amount; 
+return(withd1);
+} 
+public double balance()
+{
+return(depo1 - withd1);
+}
+}
+class empaccount1
+{
+public static void main(String arg[])
+{
+emp e = new emp(); 
+account aa;
+aa = e;
+System.out.println("Saving Account is : "+e.saving(1000)); 
+System.out.println("Deposit Amount is : " +e.deposit(500)); 
+System.out.println("Withdraw Amount is : " +e.withdraw(300)); 
+System.out.println("Balance Amount is : "+e.balance());
+}
+}
+
+
+\\EXE 6
+
+class Person
+{
+String name; 
+int age;
+void getdata(String a,int b)
+{
+name=a; age=b;
+}
+}
+class Teacher extends Person
+{
+String qualification; 
+float salary;
+void getqual(String s)
+{
+qualification =s;
+}
+void getsal(float a)
+{
+salary=a;
+}
+Void display()
+{
+System.out.println("\nName of Faculty = "+name); 
+System.out.println("\nAge of Faculty = "+age); 
+System.out.println("\nQualification of Faculty = "+qualification); 
+System.out.println("\nSalary of Faculty = "+salary);
+}
+}
+class guestTeacher extends Teacher
+{
+float ppl;
+void getppl(float a)
+{ ppl=a; }
+void display( )
+{
+System.out.println("\nName of Guest Lecturer = "+name); 
+System.out.println("\nAge of Guest Lecturere = "+age); 
+System.out.println("\nQualification of Guest Lecturer = "+qualification); 
+System.out.println("\nPayment per Lecture = "+ppl);
+}
+}
+class multiple1
+{
+public static void main(String args[])
+{
+Teacher teach=new Teacher(); 
+teach.getdata("S.Senthilvelan",40); 
+teach.getqual("MCA.,M.E.,"); 
+teach.getsal(45000);
+teach.display( );
+guestTeacher gteach=new guestTeacher(); 
+gteach.getdata("M.Sasikumar",42); 
+gteach.getqual("MCA.,M.E.,Ph.D.,"); 
+gteach.getppl(2000);
+gteach.display();
+}
+}
+
+\\EXE 7
+import java.io.*; 
+import java.util.*; 
+class student
+{
+String nam;
+int reg,ma1,ma2,ma3;
+void show(int re,String na,int m1,int m2,int m3)
+{
+reg = re; nam = na; ma1 = m1; ma2 = m2; ma3 = m3;
+System.out.println("\nStudents Details"); 
+System.out.println("\nRegister Number : "+reg); 
+System.out.println("\nName : "+nam); 
+System.out.println("\nMark1 : "+ma1); 
+System.out.println("\nMark2 : "+ma2); 
+System.out.println("\nMark3 : "+ma3);
+}
+}
+class placedstudent extends student
+{
+void show(int re,String na,int m1,int m2,int m3)
+{
+reg = re; nam = na; ma1 = m1; ma2 = m2; ma3 = m3;
+System.out.println("\nPlaced Students Details"); 
+System.out.println("\nRegister Number : "+reg); 
+System.out.println("\nName : "+nam); 
+System.out.println("\nMark1 : "+ma1); 
+System.out.println("\nMark2 : "+ma2); 
+System.out.println("\nMark3 : "+ma3);
+}
+}
+class PolyExam
+{
+public static void main (String arg[]) throws IOException
+{
+Strings1,na,s2,s3,s4; 
+int re,m1,m2,m3;
+s1 = new String(); s2 = new String(); s3 = new String();
+DataInputStream sc = new DataInputStream(System.in);
+System.out.print("\nEnter the Register Number : "); 
+s1 = sc.readLine();
+re = Integer.parseInt(s1);
+System.out.print("\nEnter the Name :"); 
+na =sc.readLine();
+System.out.print("\nEnter the Mark1 :"); 
+s2 =sc.readLine();
+m1 = Integer.parseInt(s2);
+System.out.print("\nEnter the Mark2 : "); 
+s3 = sc.readLine();
+m2 = Integer.parseInt(s3);
+System.out.print("\nEnter the Mark3 : "); 
+s3 = sc.readLine();
+m3 = Integer.parseInt(s3);
+student a1 =new student(); 
+placedstudent a2 = new placedstudent();
+a1.show(re,na,m1,m2,m3);
+a2.show(re,na,m1,m2,m3);
+}
+}
