@@ -1,41 +1,67 @@
-EXE 7 POLYMORPHISM 
+#include <stdio.h>
 
-// Parent class
-class Animal {
-    void sound() {
-        System.out.println("Animal makes a sound");
+void swap(int *a, int *b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+}
+
+void heapify(int a[], int n, int i) {
+    int l = 2 * i + 1;   // left child
+    int r = 2 * i + 2;   // right child
+    int big = i;
+
+    if (l < n && a[l] > a[big])
+        big = l;
+
+    if (r < n && a[r] > a[big])
+        big = r;
+
+    if (big != i) {
+        swap(&a[i], &a[big]);
+        heapify(a, n, big);
     }
 }
 
-// Child class
-class Dog extends Animal {
-    void sound() {
-        System.out.println("Dog barks");
+void buildHeap(int a[], int n) {
+    for (int i = n / 2 - 1; i >= 0; i--)
+        heapify(a, n, i);
+}
+
+void heapSort(int a[], int n) {
+    buildHeap(a, n);
+    for (int i = n - 1; i > 0; i--) {
+        swap(&a[0], &a[i]);
+        heapify(a, i, 0);
     }
 }
 
-// Another child class
-class Cat extends Animal {
-    void sound() {
-        System.out.println("Cat meows");
-    }
+void print(int a[], int n) {
+    for (int i = 0; i < n; i++)
+        printf("%d ", a[i]);
+    printf("\n");
 }
 
-// Main class
-public class PolymorphismDemo {
-    public static void main(String[] args) {
+int main() {
+    int n, a[50];
 
-        Animal a;   // Parent reference
+    printf("Enter number of elements: ");
+    scanf("%d", &n);
 
-        a = new Dog();   // Dog object
-        a.sound();       // Calls Dog's sound()
+    printf("Enter %d elements: ", n);
+    for (int i = 0; i < n; i++)
+        scanf("%d", &a[i]);
 
-        a = new Cat();   // Cat object
-        a.sound();       // Calls Cat's sound()
-    }
+    printf("\nOriginal array: ");
+    print(a, n);
+
+    buildHeap(a, n);
+    printf("Max Heap: ");
+    print(a, n);
+
+    heapSort(a, n);
+    printf("Sorted array (Heap Sort): ");
+    print(a, n);
+
+    return 0;
 }
-
-
-EXE 14 JDBC CONNECTIVITY 
-
-
