@@ -1,0 +1,56 @@
+//EXE 7 
+FILE NAME : PolyExam.java
+
+import java.util.*;
+
+class Student {
+    int r, m1, m2, m3;
+    String n;
+
+    void get() {
+        Scanner s = new Scanner(System.in);
+        System.out.print("Enter the Register Number : ");
+        r = s.nextInt();
+        System.out.print("Enter the Name : ");
+        n = s.next();
+        System.out.print("Enter the Mark1 : ");
+        m1 = s.nextInt();
+        System.out.print("Enter the Mark2 : ");
+        m2 = s.nextInt();
+        System.out.print("Enter the Mark3 : ");
+        m3 = s.nextInt();
+    }
+
+    void show() {
+        System.out.println("\nStudents Details\n");
+        print();
+    }
+
+    void print() {
+        System.out.println("Register Number : " + r);
+        System.out.println("Name : " + n);
+        System.out.println("Mark1 : " + m1);
+        System.out.println("Mark2 : " + m2);
+        System.out.println("Mark3 : " + m3);
+    }
+}
+
+class PlacedStudent extends Student {
+    void show() {
+        System.out.println("\nPlaced Students Details\n");
+        print();
+    }
+}
+
+public class PolyExam {
+    public static void main(String[] args) {
+        Student s = new Student();
+        s.get();
+        s.show();
+
+        Student p = new PlacedStudent(); // Polymorphism
+        p.r = s.r; p.n = s.n; p.m1 = s.m1; p.m2 = s.m2; p.m3 = s.m3;
+        p.show();
+    }
+}
+
